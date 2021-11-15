@@ -203,6 +203,8 @@ function hasError(element) {
 function setError(field, error = 'Please fill out the field above') {
     const label = field.closest('label');
 
+    const oldError = label.querySelector('.js_error-span');
+
     const errorSpan = document.createElement('span');
     errorSpan.setAttribute(
       'class',
@@ -211,9 +213,7 @@ function setError(field, error = 'Please fill out the field above') {
     errorSpan.textContent = error;
 
     if(label) {
-        if(label.querySelector('.js_error-span')) {
-            errorSpan.remove();
-        }
+        oldError && oldError.remove();
         label.append(errorSpan);
     }
 }
