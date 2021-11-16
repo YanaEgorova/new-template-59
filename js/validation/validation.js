@@ -9,6 +9,9 @@ const form = document.querySelector('.js_form');
 const formBtn = form.querySelector('.js_form-submit-btn');
 const select = form.querySelector('.js_select');
 const table = document.querySelector('.js_product-table');
+
+const expDataInput = form.querySelector('input[name="card_data"]');
+let prevExpDataInputValue = '';
 let formData = new FormData(form);
 formData = formData.entries();
 
@@ -26,6 +29,29 @@ select.addEventListener('change', (e) => {
 form.addEventListener('focusout', fieldValidation);
 
 form.addEventListener('submit', checkFilledFields);
+
+expDataInput.addEventListener('input', checkExpDataFields);
+expDataInput.addEventListener('keydown', checkExpDataFieldsForDigits);
+
+function checkExpDataFieldsForDigits(event) {
+    prevExpDataInputValue = event.target.value;
+     if(Number.isNaN(Number(event.key)) && event.key !== 'Backspace') {
+        event.preventDefault();
+     }
+}
+
+function checkExpDataFields(event) {
+    const input = event.target;
+
+    if(input.value.length === 3 && input.value[2] === '/') {
+        input.value = `${input.value[0]}${input.value[1]}`;
+        return;
+    }
+
+    if(input.value.length === 2 && prevExpDataInputValue.length < input.value.length) {
+        input.value += `/`;
+    }
+}
 
 function fieldValidation(event) {
     const field = event.target;
@@ -103,11 +129,11 @@ function fieldValidation(event) {
 
     case 'card_data':
 
-        if (value.length !== 6) {
+        if (value.length !== 7) {
             checkResult = 'Card expiration date should be 6 digits';
         }
         const month = value.substring(0, 2);
-        const year = value.substring(2, 6);
+        const year = value.substring(3, 7);
 
         if(!isExpirationDateValid(month, year)) {
             checkResult = 'Card expiration date is invalid';
