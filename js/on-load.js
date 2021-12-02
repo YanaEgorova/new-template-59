@@ -2,7 +2,7 @@ import {getLocalStorageItem} from './local-storage.js';
 import {tableRowTemplate} from './templates/table-row-template.js';
 // import {minAmount} from './calculate-total.js';
 // import {maxAmount} from './calculate-total.js';
-// const cartSpan = document.querySelector('.js_cart__span');
+const cartSpan = document.querySelector('.js_cart__span');
 const tableRow = document.querySelector('.js_table-row');
 const totalQuantity = document.querySelector('.js_total-quantity');
 const totalPrice = document.querySelectorAll('.js_total-price');
@@ -12,7 +12,7 @@ const table = document.querySelector('.js_product-table');
 
 
 window.onload = function() {
-   // cartSpan.textContent = setAmountToCartSpan();
+   cartSpan.textContent = setAmountToCartSpan();
    if(tableRow && getLocalStorageItem().length > 0) {
       shopPageFunctional();
    }
@@ -51,7 +51,7 @@ function removeItem(e) {
   const btn = e.currentTarget;
   const parent = btn.closest('.js_remove-product-parent');
   const productId = parent.getAttribute('id');
-//   cartSpan.textContent = setAmountToCartSpan();
+  cartSpan.textContent = setAmountToCartSpan();
   const updatedCart = getLocalStorageItem().filter(product => product.id !== productId);
   window.localStorage.setItem('cart', JSON.stringify(updatedCart));
   let total = 0;
