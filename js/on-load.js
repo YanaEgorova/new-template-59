@@ -12,7 +12,9 @@ const table = document.querySelector('.js_product-table');
 
 
 window.onload = function() {
-   cartSpan.textContent = setAmountToCartSpan();
+   if(cartSpan) {
+      cartSpan.textContent = setAmountToCartSpan();
+   }
    if(tableRow && getLocalStorageItem().length > 0) {
       shopPageFunctional();
    }
@@ -51,7 +53,9 @@ function removeItem(e) {
   const btn = e.currentTarget;
   const parent = btn.closest('.js_remove-product-parent');
   const productId = parent.getAttribute('id');
-  cartSpan.textContent = setAmountToCartSpan();
+  if(cartSpan) {
+   cartSpan.textContent = setAmountToCartSpan();
+}
   const updatedCart = getLocalStorageItem().filter(product => product.id !== productId);
   window.localStorage.setItem('cart', JSON.stringify(updatedCart));
   let total = 0;
