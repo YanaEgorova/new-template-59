@@ -46,7 +46,7 @@
               </li>
             </ul>
           </nav>
-          <a href="./shop.html" class="cart__btn cart__btn--desc">My Cart</a>
+          <a href="./shop.html" class="cart__btn cart__btn--desc">My Cart <span class="js_cart__span"></span></a>
         </header>
       </div>
     </div>

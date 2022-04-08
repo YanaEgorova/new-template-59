@@ -15,16 +15,6 @@
 .hero .text {
     margin-bottom: 5rem;
 }
-.cart__link {
-    width: fit-content;
-    margin: 0 auto;
-    display: block;
-    position: relative;
-}
-.cart__link svg {
-    display: block;
-    width: 5rem;
-}
 .cart__span {
     display: block;
     background-color: var(--third-brand-color);

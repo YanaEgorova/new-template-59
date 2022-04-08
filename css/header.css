@@ -86,6 +86,12 @@
     transition: all 0.3s ease-in-out;
     color: #fff;
 }
+.cart__btn span {
+    color: inherit;
+    font-family: inherit;
+    padding-left: 1rem;
+    border-left: .2rem solid var(--sub-text-color);
+}
 .cart__btn--desc {
     display: none;
 }
