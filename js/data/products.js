@@ -29,6 +29,7 @@ export const products = [
         name: 'Product Title',
         price: 24.99,
         type: 'trial',
+        full_price: 198.98,
         image: './img/img2.png',
         description: [
             {
